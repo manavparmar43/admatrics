@@ -1,0 +1,5 @@
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:root@localhost:5432/admatrics"
+MIDDLEWARE_KEY = "k)]]Xg}KB4:UN.*"
+SECRET_KEY = "k)]]Xg}KB4:UN.*"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 2880

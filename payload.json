@@ -1,0 +1,108 @@
+
+"""URL : http://127.0.0.1:8000/create-advertise/"""
+"""POST Request"""
+"""Add advertise payload"""
+{
+  "ad_promot_company_name": "Test Company",
+  "ad_message": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  "ad_run_hours": "120" //Ad is running how many hours
+}
+
+""" Output Payload """
+{
+  "id": "b452ada8-e72b-4412-9484-ab29ab0b2dba",
+  "ad_promot_company_name": "Test Company",
+  "ad_message": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  "buy_url": "http://localhost:8000",
+  "ad_run_hours": "120",
+  "ad_cost": "12000",
+  "is_ad_active": true,
+  "advertise_end_date": "2025-05-30",
+  "advertise_end_time": "19:24",
+  "user": "bed3a400-a83a-46c7-8d1d-a27815909f74"
+}
+"---------------------------------------------------------------------------------"
+""" URL : http://127.0.0.1:8000/users/"""
+"""POST Request"""
+"""Input Payload"""
+{
+  
+  "Name": "Test",
+  "email": "test@gmail.com",
+  "dateofbirth": "1999-12-27",
+  "gender": "male",
+  "is_superadmin": true,
+  "password": "test@11"
+}
+""" Output payload """
+{
+  "id": "bed3a400-a83a-46c7-8d1d-a27815909f74",
+  "Name": "Test",
+  "email": "test@gmail.com",
+  "dateofbirth": "1999-12-27",
+  "gender": "male",
+  "is_superadmin": true,
+  "age_range": "25", // Calculate age by DOB
+  "password": "$2b$12$AiDSfjB.n4kI2fCvZJooEOIKFJznaIpCBx0CWOJ.bB2RM3FI.ESZ6"
+}
+"---------------------------------------------------------------------------------"
+
+""" URL : http://127.0.0.1:8000/login-user/"""
+"""POST Request"""
+"""Input Payload"""
+{
+  "email":"test@gmail.com",
+  "password":"test@11"
+}
+""" Output Payload """
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJlZDNhNDAwLWE4M2EtNDZjNy04ZDFkLWEyNzgxNTkwOWY3NCIsImV4cCI6MTc0ODM1MzczM30._0htG3a6OHxlB9N3j9pwJA6vGBZ5ISlX9W_NPdFtwBI"
+}
+"---------------------------------------------------------------------------------"
+
+"""URL : http://127.0.0.1:8000/create/fact-ad-matrics/"""
+"""POST Request"""
+""" Pass Bearer Token on headers """
+""" token : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJlZDNhNDAwLWE4M2EtNDZjNy04ZDFkLWEyNzgxNTkwOWY3NCIsImV4cCI6MTc0ODM1MzczM30._0htG3a6OHxlB9N3j9pwJA6vGBZ5ISlX9W_NPdFtwBI' """
+"""1. User can only see the advertise payload"""
+{
+  "advertise_id":"b452ada8-e72b-4412-9484-ab29ab0b2dba"
+}
+"""1. Output Payload """
+{
+  "advertise_id": "b452ada8-e72b-4412-9484-ab29ab0b2dba",
+  "likes": true,
+  "impressions": true,
+  "clicks": false,
+  "conversions": false,
+  "register_user": "bed3a400-a83a-46c7-8d1d-a27815909f74",
+  "guest_user": null,
+  "dim_date_id": "5a9924bd-e57f-4fd9-affa-4c8099095aa4",
+  "platform_id": "c2b4deb0-1f37-4056-a739-f63c52e310f2",
+  "device_type_id": "c0aacf0f-d069-4dd0-be84-3089662618da",
+  "region_id": "a466219d-4137-40be-b0d1-fa314d31eead"
+}
+"***********************************************************"
+"""2. User likes the post payload"""
+{
+  "likes":true,
+  "advertise_id":"b452ada8-e72b-4412-9484-ab29ab0b2dba"
+}
+"""2. Output Payload"""
+{
+  "advertise_id": "b452ada8-e72b-4412-9484-ab29ab0b2dba",
+  "likes": true,
+  "impressions": true,
+  "clicks": false,
+  "conversions": false,
+  "register_user": "bed3a400-a83a-46c7-8d1d-a27815909f74",
+  "guest_user": null,
+  "dim_date_id": "5a9924bd-e57f-4fd9-affa-4c8099095aa4",
+  "platform_id": "c2b4deb0-1f37-4056-a739-f63c52e310f2",
+  "device_type_id": "c0aacf0f-d069-4dd0-be84-3089662618da",
+  "region_id": "a466219d-4137-40be-b0d1-fa314d31eead"
+}
+"Note: If you have dislike the ad so set likes : false"
+"***********************************************************"
+
+
