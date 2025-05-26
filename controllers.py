@@ -172,7 +172,7 @@ def create_user_data(db: Session, user_data: UserSchemas):
         db.close()
 
 
-def create_adverise(db: Session, ad_data: AdvertisementSchema, token=None):
+def create_adverise_controller(db: Session, ad_data: AdvertisementSchema, token=None):
     try:
 
         user_id = decode_access_token(token=token).get("id")

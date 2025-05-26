@@ -24,7 +24,7 @@ from typing import Optional, List
 from controllers import (
     create_user_data,
     fact_ad_daily_report_manage,
-    create_adverise,
+    create_adverise_controller,
     create_fact_ad_daily_report,
 )
 from datetime import timedelta
@@ -52,17 +52,22 @@ app.add_middleware(SessionMiddleware, secret_key=MIDDLEWARE_KEY)
 
 @app.post("/users/", response_model=UserSchemas)
 def create_user(user_data: UserSchemas, db: Session = Depends(get_db)):
+    if db.query(User).filter(User.email == user_data.email).first():
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email Already Used...!",
+        )
     created_user_data = create_user_data(db, user_data)
     return created_user_data
 
 
 @app.post("/create-advertise/", response_model=AdvertisementSchema)
-async def create_advertise_controller(
+async def create_advertise(
     ad_data: AdvertisementSchema,
     token: Optional[str] = Depends(oauth2_scheme),
     db: Session = Depends(get_db),
 ):
-    response_data = create_adverise(db=db, ad_data=ad_data, token=token)
+    response_data = create_adverise_controller(db=db, ad_data=ad_data, token=token)
     return response_data
 
 
